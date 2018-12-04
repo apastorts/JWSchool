@@ -11,7 +11,7 @@
            <div class="p-2 font-bold block">Bible Reading:</div>
            <div class="p-2 font-bold block">
              <div class="bibleReading-selection inline-block">Not Assigned</div>
-             <select-user talk="bibleReading"></select-user>
+             <select-user :users="users" v-model="bibleReading"></select-user>
            </div>
          </div>
        </div>
@@ -33,8 +33,16 @@
         components: {
           Datepicker
         },
+        data(){
+          return{
+            users: '',
+            bibleReading: ''
+          }
+        },
         mounted() {
-            console.log('Component mounted.')
+          axios
+            .get('/api/users')
+            .then(response => (this.users = response.data.data));
         }
     }
 </script>

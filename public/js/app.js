@@ -47427,12 +47427,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: {
-        Datepicker: __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__["a" /* default */]
-    },
-    mounted: function mounted() {
-        console.log('Component mounted.');
-    }
+  components: {
+    Datepicker: __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__["a" /* default */]
+  },
+  data: function data() {
+    return {
+      users: '',
+      bibleReading: ''
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/api/users').then(function (response) {
+      return _this.users = response.data.data;
+    });
+  }
 });
 
 /***/ }),
@@ -48954,7 +48964,16 @@ var render = function() {
               _vm._v("Not Assigned")
             ]),
             _vm._v(" "),
-            _c("select-user", { attrs: { talk: "bibleReading" } })
+            _c("select-user", {
+              attrs: { users: _vm.users },
+              model: {
+                value: _vm.bibleReading,
+                callback: function($$v) {
+                  _vm.bibleReading = $$v
+                },
+                expression: "bibleReading"
+              }
+            })
           ],
           1
         )
@@ -49433,8 +49452,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['value', 'users'],
+  data: function data() {
+    return {
+      show: false,
+      talk: this.value
+    };
+  }
+});
 
 /***/ }),
 /* 51 */
@@ -49444,16 +49475,44 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c(
+      "button",
+      {
+        on: {
+          click: function($event) {
+            _vm.show = true
+          }
+        }
+      },
+      [_vm._v("Select")]
+    ),
+    _vm._v(" "),
+    _vm.show
+      ? _c(
+          "div",
+          [
+            _vm._v("\n    List of users\n    "),
+            _vm._l(_vm.users, function(user) {
+              return _c(
+                "div",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.$emit("input", user.id)
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(user.name))]
+              )
+            })
+          ],
+          2
+        )
+      : _vm._e()
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("button", [_vm._v("Select")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
