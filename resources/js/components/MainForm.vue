@@ -8,7 +8,11 @@
            <div class="treasures p-2 text-center text-4xl">
              Treasures From God's Word
            </div>
-           <div class="p-2 font-bold" >Bible Reading:</div>
+           <div class="p-2 font-bold block">Bible Reading:</div>
+           <div class="p-2 font-bold block">
+             <div class="bibleReading-selection inline-block">Not Assigned</div>
+             <select-user talk="bibleReading"></select-user>
+           </div>
          </div>
        </div>
        <div class="row">

@@ -19,6 +19,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('main-form', require('./components/MainForm.vue'));
+Vue.component('select-user', require('./components/SelectUser.vue'));
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
