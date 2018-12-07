@@ -8,12 +8,14 @@
            <div class="treasures p-2 text-center text-4xl">
              Treasures From God's Word
            </div>
-           <div class="p-2 font-bold block">Bible Reading:</div>
-           <div class="p-2 font-bold block">
-             <div class="bibleReading-selection inline-block">
-               {{bibleReading.name}}
+           <div class="flex justify-between text-lg">
+             <div class="p-2 font-bold block">Bible Reading</div>
+             <div class="p-2 font-bold block">
+               <div class="bibleReading-selection inline-block">
+                 {{bibleReading.name}}
+               </div>
+               <select-user :users=users v-model="bibleReading"></select-user>
              </div>
-             <select-user :users=users v-model="bibleReading"></select-user>
            </div>
          </div>
        </div>

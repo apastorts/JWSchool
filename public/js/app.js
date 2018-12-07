@@ -47426,6 +47426,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -48957,33 +48959,41 @@ var render = function() {
           _vm._v("\n         Treasures From God's Word\n       ")
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "p-2 font-bold block" }, [
-          _vm._v("Bible Reading:")
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "p-2 font-bold block" },
-          [
-            _c("div", { staticClass: "bibleReading-selection inline-block" }, [
-              _vm._v(
-                "\n           " + _vm._s(_vm.bibleReading.name) + "\n         "
-              )
-            ]),
-            _vm._v(" "),
-            _c("select-user", {
-              attrs: { users: _vm.users },
-              model: {
-                value: _vm.bibleReading,
-                callback: function($$v) {
-                  _vm.bibleReading = $$v
-                },
-                expression: "bibleReading"
-              }
-            })
-          ],
-          1
-        )
+        _c("div", { staticClass: "flex justify-between text-lg" }, [
+          _c("div", { staticClass: "p-2 font-bold block" }, [
+            _vm._v("Bible Reading")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "p-2 font-bold block" },
+            [
+              _c(
+                "div",
+                { staticClass: "bibleReading-selection inline-block" },
+                [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.bibleReading.name) +
+                      "\n           "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("select-user", {
+                attrs: { users: _vm.users },
+                model: {
+                  value: _vm.bibleReading,
+                  callback: function($$v) {
+                    _vm.bibleReading = $$v
+                  },
+                  expression: "bibleReading"
+                }
+              })
+            ],
+            1
+          )
+        ])
       ])
     ]),
     _vm._v(" "),
@@ -49480,6 +49490,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -49594,18 +49608,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "button",
-      {
-        on: {
-          click: function($event) {
-            _vm.show = true
-          }
+  return _c("div", { staticClass: "inline-block" }, [
+    _c("i", {
+      staticClass: "fas fa-plus ml-2 cursor-pointer hover:text-grey-darker",
+      on: {
+        click: function($event) {
+          _vm.show = true
         }
-      },
-      [_vm._v("Select")]
-    ),
+      }
+    }),
     _vm._v(" "),
     _vm.show
       ? _c(
@@ -49622,23 +49633,27 @@ var render = function() {
             staticClass: "absolute z-10 bg-white shadow p-4 pin-x"
           },
           [
-            _c(
-              "div",
-              { staticClass: "p-2 font-bold text-lg" },
-              [
-                _vm._v("\n      List of users\n      "),
-                _c("search-bar", {
-                  model: {
-                    value: _vm.allUsers,
-                    callback: function($$v) {
-                      _vm.allUsers = $$v
-                    },
-                    expression: "allUsers"
-                  }
-                })
-              ],
-              1
-            ),
+            _c("div", { staticClass: "flex justify-between" }, [
+              _c("div", { staticClass: "p-2 font-bold text-xl" }, [
+                _vm._v("\n        List of users\n      ")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                [
+                  _c("search-bar", {
+                    model: {
+                      value: _vm.allUsers,
+                      callback: function($$v) {
+                        _vm.allUsers = $$v
+                      },
+                      expression: "allUsers"
+                    }
+                  })
+                ],
+                1
+              )
+            ]),
             _vm._v(" "),
             _c(
               "div",
@@ -49648,7 +49663,7 @@ var render = function() {
                   "div",
                   {
                     staticClass:
-                      "flex justify-between p-2 hover:bg-blue-lightest cursor-pointer shadow-inner-lg",
+                      "flex justify-between p-2 hover:bg-blue-lightest text-lg cursor-pointer shadow-inner-lg",
                     on: {
                       click: function($event) {
                         _vm.$emit("input", user)
