@@ -13,7 +13,7 @@
              <div class="bibleReading-selection inline-block">
                {{bibleReading.name}}
              </div>
-             <select-user :users="users" v-model="bibleReading"></select-user>
+             <select-user :users=users v-model="bibleReading"></select-user>
            </div>
          </div>
        </div>
