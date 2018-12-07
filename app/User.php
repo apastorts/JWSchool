@@ -30,10 +30,10 @@ class User extends Authenticatable
     ];
 
     public function talks(){
-      return $this->hasMany('App\Talk');
+      return $this->hasMany(Talk::class);
     }
 
     public function role(){
-      return $this->hasOne('App\Role');
+      return $this->belongsTo(Role::class);
     }
 }

@@ -10,7 +10,9 @@
            </div>
            <div class="p-2 font-bold block">Bible Reading:</div>
            <div class="p-2 font-bold block">
-             <div class="bibleReading-selection inline-block">Not Assigned</div>
+             <div class="bibleReading-selection inline-block">
+               {{bibleReading.name}}
+             </div>
              <select-user :users="users" v-model="bibleReading"></select-user>
            </div>
          </div>
@@ -36,7 +38,9 @@
         data(){
           return{
             users: '',
-            bibleReading: ''
+            bibleReading: {
+              name: 'Not Assigned'
+            }
           }
         },
         mounted() {

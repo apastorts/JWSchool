@@ -14028,7 +14028,7 @@ module.exports = function normalizeComponent (
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(52);
+module.exports = __webpack_require__(53);
 
 
 /***/ }),
@@ -14044,7 +14044,7 @@ module.exports = __webpack_require__(52);
 
 __webpack_require__(14);
 
-window.Vue = __webpack_require__(37);
+window.Vue = __webpack_require__(38);
 
 /**
  * The following block of code may be used to automatically register your
@@ -14054,8 +14054,8 @@ window.Vue = __webpack_require__(37);
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('main-form', __webpack_require__(40));
-Vue.component('select-user', __webpack_require__(44));
+Vue.component('main-form', __webpack_require__(41));
+Vue.component('select-user', __webpack_require__(45));
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
@@ -36113,7 +36113,8 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 37 */
+/* 37 */,
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47076,10 +47077,10 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(38).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(39).setImmediate))
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -47135,7 +47136,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(39);
+__webpack_require__(40);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -47149,7 +47150,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -47342,15 +47343,15 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(6)))
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(11)
 /* script */
-var __vue_script__ = __webpack_require__(41)
+var __vue_script__ = __webpack_require__(42)
 /* template */
-var __vue_template__ = __webpack_require__(43)
+var __vue_template__ = __webpack_require__(44)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -47389,12 +47390,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__ = __webpack_require__(43);
+//
+//
 //
 //
 //
@@ -47433,7 +47436,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       users: '',
-      bibleReading: ''
+      bibleReading: {
+        name: 'Not Assigned'
+      }
     };
   },
   mounted: function mounted() {
@@ -47446,7 +47451,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48936,7 +48941,7 @@ var Datepicker = {render: function(){var _vm=this;var _h=_vm.$createElement;var 
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -48961,7 +48966,9 @@ var render = function() {
           { staticClass: "p-2 font-bold block" },
           [
             _c("div", { staticClass: "bibleReading-selection inline-block" }, [
-              _vm._v("Not Assigned")
+              _vm._v(
+                "\n           " + _vm._s(_vm.bibleReading.name) + "\n         "
+              )
             ]),
             _vm._v(" "),
             _c("select-user", {
@@ -49007,19 +49014,19 @@ if (false) {
 }
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(45)
+  __webpack_require__(46)
 }
 var normalizeComponent = __webpack_require__(11)
 /* script */
-var __vue_script__ = __webpack_require__(50)
+var __vue_script__ = __webpack_require__(51)
 /* template */
-var __vue_template__ = __webpack_require__(51)
+var __vue_template__ = __webpack_require__(52)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -49058,17 +49065,17 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(46);
+var content = __webpack_require__(47);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(48)("5b14ff96", content, false, {});
+var update = __webpack_require__(49)("5b14ff96", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -49084,10 +49091,10 @@ if(false) {
 }
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(47)(false);
+exports = module.exports = __webpack_require__(48)(false);
 // imports
 
 
@@ -49098,7 +49105,7 @@ exports.push([module.i, "\n", ""]);
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports) {
 
 /*
@@ -49180,7 +49187,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -49199,7 +49206,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(49)
+var listToStyles = __webpack_require__(50)
 
 /*
 type StyleObject = {
@@ -49408,7 +49415,7 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports) {
 
 /**
@@ -49441,11 +49448,20 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -49461,14 +49477,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: ['value', 'users'],
   data: function data() {
     return {
-      show: false,
-      talk: this.value
+      show: false
     };
   }
 });
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -49491,19 +49506,35 @@ var render = function() {
     _vm.show
       ? _c(
           "div",
+          { staticClass: "absolute z-10 bg-white shadow p-4 pin-x" },
           [
-            _vm._v("\n    List of users\n    "),
+            _c("div", { staticClass: "p-2 font-bold text-lg" }, [
+              _vm._v("\n      List of users\n    ")
+            ]),
+            _vm._v(" "),
             _vm._l(_vm.users, function(user) {
               return _c(
                 "div",
                 {
+                  staticClass:
+                    "flex justify-between p-2 hover:bg-blue-light hover:text-white cursor-pointer shadow-inner-lg",
                   on: {
                     click: function($event) {
-                      _vm.$emit("input", user.id)
+                      _vm.$emit("input", user)
                     }
                   }
                 },
-                [_vm._v(_vm._s(user.name))]
+                [
+                  _c("div", [
+                    _vm._v("\n        " + _vm._s(user.name) + "\n      ")
+                  ]),
+                  _vm._v(" "),
+                  _vm.value.id == user.id
+                    ? _c("div", { staticClass: "text-black" }, [
+                        _c("i", { staticClass: "fas fa-check-circle" })
+                      ])
+                    : _vm._e()
+                ]
               )
             })
           ],
@@ -49523,7 +49554,7 @@ if (false) {
 }
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
