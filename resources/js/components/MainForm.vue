@@ -1,10 +1,10 @@
 <template>
-    <div class="container">
-      <div class="row">
-        <datepicker></datepicker>
+    <div class="md:w-1/2 sm:w-full m-auto p-2">
+      <div>
+        <datepicker input-class="m-4 bg-transparent p-2 font-bold text-lg border-bottom"></datepicker>
       </div>
-       <div class="row">
-         <div class="col-md-8">
+       <div>
+         <div class="w-full">
            <div class="treasures p-2 text-center text-4xl">
              Treasures From God's Word
            </div>
@@ -37,8 +37,8 @@
            </div>
          </div>
        </div>
-       <div class="row">
-         <div class="col-md-8">
+       <div>
+         <div class="w-full">
            <div class="apply-yourself p-2 text-center text-4xl">
              Apply Yourself To The Field Ministry
            </div>
@@ -71,8 +71,8 @@
            </div>
          </div>
        </div>
-       <div class="row">
-         <div class="col-md-8">
+       <div>
+         <div class="w-full">
            <div class="living p-2 text-center text-4xl">
              Living As Christians
            </div>

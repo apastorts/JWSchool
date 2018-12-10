@@ -49362,11 +49362,22 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [_c("datepicker")], 1),
+  return _c("div", { staticClass: "md:w-1/2 sm:w-full m-auto p-2" }, [
+    _c(
+      "div",
+      [
+        _c("datepicker", {
+          attrs: {
+            "input-class":
+              "m-4 bg-transparent p-2 font-bold text-lg border-bottom"
+          }
+        })
+      ],
+      1
+    ),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-8" }, [
+    _c("div", [
+      _c("div", { staticClass: "w-full" }, [
         _c("div", { staticClass: "treasures p-2 text-center text-4xl" }, [
           _vm._v("\n         Treasures From God's Word\n       ")
         ]),
@@ -49479,8 +49490,8 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-8" }, [
+    _c("div", [
+      _c("div", { staticClass: "w-full" }, [
         _c("div", { staticClass: "apply-yourself p-2 text-center text-4xl" }, [
           _vm._v("\n         Apply Yourself To The Field Ministry\n       ")
         ]),
@@ -49583,8 +49594,8 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-8" }, [
+    _c("div", [
+      _c("div", { staticClass: "w-full" }, [
         _c("div", { staticClass: "living p-2 text-center text-4xl" }, [
           _vm._v("\n         Living As Christians\n       ")
         ]),
