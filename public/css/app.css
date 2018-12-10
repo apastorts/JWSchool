@@ -16740,6 +16740,11 @@ a.text-dark:focus {
   color: white;
 }
 
+.living {
+  color: white;
+  background-color: #961426;
+}
+
 .apply-yourself {
   background-color: #c08531;
   color: white;
