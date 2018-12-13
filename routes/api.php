@@ -21,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::middleware('auth:api')->get('/users', function (Request $request) {
     return  UserCollection::collection(App\User::all());
 });
+
+Route::middleware('auth:api')->post('/meeting/create', 'MeetingController@store');

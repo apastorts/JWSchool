@@ -5,7 +5,7 @@
           <datepicker input-class="m-4 bg-transparent p-2 font-bold text-lg border-bottom" v-model="today" ></datepicker>
         </div>
         <div>
-          <div class="rounded py-2 px-4 text-white text-xl font-bold bg-blue hover:bg-blue-darker cursor-pointer">
+          <div class="rounded py-2 px-4 text-white text-xl font-bold bg-blue hover:bg-blue-darker cursor-pointer" @click="saveMeeting">
             <i class="fas fa-save"></i>
           </div>
         </div>
@@ -19,9 +19,9 @@
              <div class="p-2 font-bold block">Treasures Talk</div>
              <div class="p-2 font-bold block">
                <div class="bibleReading-selection inline-block">
-                 {{talk.name}}
+                 {{treasuresTalk.name}}
                </div>
-               <select-user :users=users v-model="talk"></select-user>
+               <select-user :users=users v-model="treasuresTalk"></select-user>
              </div>
            </div>
            <div class="flex justify-between text-lg">
@@ -130,7 +130,7 @@
             bibleReading: {
               name: 'Not Assigned'
             },
-            talk: {
+            treasuresTalk: {
               name: 'Not Assigned'
             },
             digging: {
@@ -160,6 +160,23 @@
           axios
             .get('/api/users')
             .then(response => (this.users = response.data.data));
+        },
+        methods:{
+          saveMeeting(){
+            axios
+              .get('/api/meeting/create',{
+                bibleReading: this.bibleReading.id,
+                treasuresTalk: this.treasuresTalk.id,
+                digging: this.digging.id,
+                initial: this.initial.id,
+                firstRV: this.firstRV.id,
+                talk: this.talk.id,
+                congregationBible: this.congregationBible.id,
+                secondPart: this.secondPart.id,
+                localNeeds: this.localNeeds.id
+              })
+              .then(response => (this.users = response.data.data));
+          }
         }
     }
 </script>

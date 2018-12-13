@@ -32,7 +32,16 @@ $factory->define(App\Talk::class, function (Faker $faker) {
         'type' => $faker->name,
         'user_id' => function(){
           return factory('App\User')->create()->id;
+        },
+        'meeting_id' => function(){
+          return factory('App\Meeting')->create()->id;
         }
+    ];
+});
+
+$factory->define(App\Meeting::class, function (Faker $faker) {
+    return [
+        'date' => now()
     ];
 });
 
