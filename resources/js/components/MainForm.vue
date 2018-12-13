@@ -1,7 +1,14 @@
 <template>
     <div class="md:w-1/2 sm:w-full m-auto p-2">
-      <div>
-        <datepicker input-class="m-4 bg-transparent p-2 font-bold text-lg border-bottom" v-model="today" ></datepicker>
+      <div class="flex flex-row justify-between">
+        <div>
+          <datepicker input-class="m-4 bg-transparent p-2 font-bold text-lg border-bottom" v-model="today" ></datepicker>
+        </div>
+        <div>
+          <div class="rounded py-2 px-4 text-white text-xl font-bold bg-blue hover:bg-blue-darker cursor-pointer">
+            <i class="fas fa-save"></i>
+          </div>
+        </div>
       </div>
        <div>
          <div class="w-full">
@@ -111,14 +118,14 @@
 <script>
   import Datepicker from 'vuejs-datepicker';
   var moment = require('moment');
-  
+
     export default {
         components: {
           Datepicker
         },
         data(){
           return{
-            today: moment().format(),
+            today: moment().day(3).toDate(),
             users: '',
             bibleReading: {
               name: 'Not Assigned'

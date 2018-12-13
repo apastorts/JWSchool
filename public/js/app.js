@@ -47818,6 +47818,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 var moment = __webpack_require__(62);
@@ -47830,7 +47837,7 @@ var moment = __webpack_require__(62);
     var _ref;
 
     return _ref = {
-      today: moment().format(),
+      today: moment().day(3).toDate(),
       users: '',
       bibleReading: {
         name: 'Not Assigned'
@@ -49365,25 +49372,29 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "md:w-1/2 sm:w-full m-auto p-2" }, [
-    _c(
-      "div",
-      [
-        _c("datepicker", {
-          attrs: {
-            "input-class":
-              "m-4 bg-transparent p-2 font-bold text-lg border-bottom"
-          },
-          model: {
-            value: _vm.today,
-            callback: function($$v) {
-              _vm.today = $$v
+    _c("div", { staticClass: "flex flex-row justify-between" }, [
+      _c(
+        "div",
+        [
+          _c("datepicker", {
+            attrs: {
+              "input-class":
+                "m-4 bg-transparent p-2 font-bold text-lg border-bottom"
             },
-            expression: "today"
-          }
-        })
-      ],
-      1
-    ),
+            model: {
+              value: _vm.today,
+              callback: function($$v) {
+                _vm.today = $$v
+              },
+              expression: "today"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _vm._m(0)
+    ]),
     _vm._v(" "),
     _c("div", [
       _c("div", { staticClass: "w-full" }, [
@@ -49708,7 +49719,23 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "div",
+        {
+          staticClass:
+            "rounded py-2 px-4 text-white text-xl font-bold bg-blue hover:bg-blue-darker cursor-pointer"
+        },
+        [_c("i", { staticClass: "fas fa-save" })]
+      )
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
