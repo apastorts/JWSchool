@@ -1,7 +1,7 @@
 <template>
     <div class="md:w-1/2 sm:w-full m-auto p-2">
       <div>
-        <datepicker input-class="m-4 bg-transparent p-2 font-bold text-lg border-bottom"></datepicker>
+        <datepicker input-class="m-4 bg-transparent p-2 font-bold text-lg border-bottom" v-model="today" ></datepicker>
       </div>
        <div>
          <div class="w-full">
@@ -110,13 +110,15 @@
 
 <script>
   import Datepicker from 'vuejs-datepicker';
-
+  var moment = require('moment');
+  
     export default {
         components: {
           Datepicker
         },
         data(){
           return{
+            today: moment().format(),
             users: '',
             bibleReading: {
               name: 'Not Assigned'
