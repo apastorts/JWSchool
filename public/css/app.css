@@ -16725,14 +16725,19 @@ a.text-dark:focus {
   }
 }
 
+body {
+  color: #044e54;
+}
+
 .navbar-laravel {
-  background-color: #3490dc;
+  background-color: white;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .04);
           box-shadow: 0 2px 4px rgba(0, 0, 0, .04);
+  color: #2cb1bc;
 }
 
 .navbar-light .navbar-brand {
-  color: white;
+  color: #2cb1bc;
 }
 
 .treasures {
@@ -16748,6 +16753,15 @@ a.text-dark:focus {
 .apply-yourself {
   background-color: #c08531;
   color: white;
+}
+
+.cover-background:hover {
+  background-color: #e0fcff;
+}
+
+.main-header {
+  background-color: #87eaf2;
+  color: #044e54;
 }
 
 @media (min-width: 576px) {

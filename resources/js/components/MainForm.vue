@@ -2,7 +2,7 @@
     <div class="md:w-1/2 sm:w-full m-auto p-2">
       <div class="flex flex-row justify-between">
         <div>
-          <datepicker input-class="m-4 bg-transparent p-2 font-bold text-lg border-bottom" v-model="today" ></datepicker>
+          <datepicker input-class="m-4 bg-transparent p-2 font-bold text-lg border-bottom" v-model="meetingDay" ></datepicker>
         </div>
         <div>
           <div class="rounded py-2 px-4 text-white text-xl font-bold bg-blue hover:bg-blue-darker cursor-pointer" @click="saveMeeting">
@@ -125,7 +125,7 @@
         },
         data(){
           return{
-            today: moment().day(3).toDate(),
+            meetingDay: moment().day(3).toDate(),
             users: '',
             bibleReading: {
               name: 'Not Assigned'
@@ -164,7 +164,7 @@
         methods:{
           saveMeeting(){
             axios
-              .get('/api/meeting/create',{
+              .post('/api/meeting/create',{
                 bibleReading: this.bibleReading.id,
                 treasuresTalk: this.treasuresTalk.id,
                 digging: this.digging.id,
@@ -173,9 +173,12 @@
                 talk: this.talk.id,
                 congregationBible: this.congregationBible.id,
                 secondPart: this.secondPart.id,
-                localNeeds: this.localNeeds.id
+                localNeeds: this.localNeeds.id,
+                meetingDate: this.meetingDay
               })
-              .then(response => (this.users = response.data.data));
+              .then(response => (
+                window.location.replace('/')
+              ));
           }
         }
     }

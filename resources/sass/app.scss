@@ -70,13 +70,18 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+body{
+  color: $main-darkest;
+}
+
 .navbar-laravel {
-  background-color: $blue;
+  background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  color: $main;
 }
 
 .navbar-light .navbar-brand{
-  color: white;
+  color: $main;
 }
 
 .treasures{
@@ -92,4 +97,13 @@
 .apply-yourself{
   background-color: $apply;
   color:white;
+}
+
+.cover-background:hover{
+  background-color: $main-lightest
+}
+
+.main-header{
+  background-color: $main-lighter;
+  color: $main-darkest;
 }
