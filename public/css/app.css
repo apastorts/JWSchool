@@ -16725,7 +16725,8 @@ a.text-dark:focus {
   }
 }
 
-body {
+body,
+a {
   color: #044e54;
 }
 

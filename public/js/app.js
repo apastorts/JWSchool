@@ -64186,6 +64186,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var moment = __webpack_require__(0);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    meeting: {
+      type: Object,
+      default: null
+    }
+  },
   components: {
     Datepicker: __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__["a" /* default */]
   },
@@ -64228,6 +64234,16 @@ var moment = __webpack_require__(0);
     axios.get('/api/users').then(function (response) {
       return _this.users = response.data.data;
     });
+
+    if (this.meeting) {
+      this.meeting.talks.forEach(function (talk) {
+        console.log(talk + ' done');
+        _this[talk.type].name = talk.user.name;
+        _this[talk.type].id = talk.user.id;
+        _this[talk.type].role = talk.user.role;
+      });
+      this.meetingDay = this.meeting.date;
+    }
   },
 
   methods: {
@@ -64242,7 +64258,8 @@ var moment = __webpack_require__(0);
         congregationBible: this.congregationBible.id,
         secondPart: this.secondPart.id,
         localNeeds: this.localNeeds.id,
-        meetingDate: this.meetingDay
+        meetingDate: this.meetingDay,
+        meeting_id: this.meeting ? this.meeting.id : null
       }).then(function (response) {
         return window.location.replace('/');
       });

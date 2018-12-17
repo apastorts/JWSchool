@@ -120,6 +120,12 @@
   var moment = require('moment');
 
     export default {
+        props: {
+          meeting:{
+            type: Object,
+            default: null
+          }
+        },
         components: {
           Datepicker
         },
@@ -160,6 +166,16 @@
           axios
             .get('/api/users')
             .then(response => (this.users = response.data.data));
+
+            if(this.meeting){
+              this.meeting.talks.forEach((talk) => {
+                console.log(talk + ' done');
+                this[talk.type].name = talk.user.name;
+                this[talk.type].id = talk.user.id;
+                this[talk.type].role = talk.user.role;
+              });
+              this.meetingDay = this.meeting.date;
+            }
         },
         methods:{
           saveMeeting(){
@@ -174,12 +190,14 @@
                 congregationBible: this.congregationBible.id,
                 secondPart: this.secondPart.id,
                 localNeeds: this.localNeeds.id,
-                meetingDate: this.meetingDay
+                meetingDate: this.meetingDay,
+                meeting_id: this.meeting ? this.meeting.id : null
               })
               .then(response => (
                 window.location.replace('/')
               ));
-          }
+          },
+
         }
     }
 </script>

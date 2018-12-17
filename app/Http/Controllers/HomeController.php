@@ -31,6 +31,6 @@ class HomeController extends Controller
 
     public function new()
     {
-      return view('newMeeting');
+      return view('meeting.new');
     }
 }

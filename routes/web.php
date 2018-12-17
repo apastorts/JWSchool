@@ -15,3 +15,4 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/meeting/new', 'HomeController@new');
+Route::get('/meeting/show/{meeting}', 'MeetingController@show');
