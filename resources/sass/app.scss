@@ -63,6 +63,7 @@
 
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 // Variables
 @import 'variables';
@@ -104,6 +105,7 @@ body, a {
 }
 
 .main-header{
+  font-family: 'Roboto', sans-serif;
   background-color: $main-lighter;
   color: $main-darkest;
 }

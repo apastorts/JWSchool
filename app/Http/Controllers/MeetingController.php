@@ -17,8 +17,8 @@ class MeetingController extends Controller
        ]);
 
        $meeting = request('meeting_id') ? Meeting::find(request('meeting_id')) : new Meeting();
-       $meeting->date = str_replace(['T','Z'],' ', request('meetingDate'));
-
+       $meeting->date = str_replace(['T','Z'],' ', request('meetingDate')['date']);
+       $meeting->user_id = auth()->user()->id;
        $this->deleteTalks($meeting);
 
        $meeting->save();

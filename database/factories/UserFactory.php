@@ -23,6 +23,9 @@ $factory->define(App\User::class, function (Faker $faker) {
         'sex' => $faker->title == 'Mr' ? 'Male' : 'Female',
         'role_id' => function(){
           return factory('App\Role')->create()->id;
+        },
+        'congregation_id' => function(){
+          return factory('App\Congregation')->create()->id;
         }
     ];
 });
@@ -41,11 +44,20 @@ $factory->define(App\Talk::class, function (Faker $faker) {
 
 $factory->define(App\Meeting::class, function (Faker $faker) {
     return [
-        'date' => now()
+        'date' => now(),
+        'user_id' => function(){
+          return factory('App\User')->create()->id;
+        }
     ];
 });
 
 $factory->define(App\Role::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+    ];
+});
+
+$factory->define(App\Congregation::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
     ];

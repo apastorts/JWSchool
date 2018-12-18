@@ -1,5 +1,6 @@
 <?php
-
+use App\Role;
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,3 +19,11 @@ Route::get('/meeting/new', 'HomeController@new');
 Route::get('/meeting/show/{meeting}', 'MeetingController@show');
 
 Route::middleware('auth')->get('/meeting/delete/{meeting}', 'MeetingController@delete');
+Route::middleware('auth')->get('/user/create', function(){
+  $roles = Role::all();
+  return view('auth.register', compact('roles'));
+});
+Route::middleware('auth')->get('/profile', function(){
+  $user = User::all();
+  return view('auth.profile', compact('user'));
+});

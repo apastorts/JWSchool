@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->string('sex')->nullable();
             $table->integer('role_id')->default(1);
+            $table->integer('congregation_id');
             $table->timestamps();
         });
     }
