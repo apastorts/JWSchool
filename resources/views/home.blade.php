@@ -19,19 +19,27 @@
     <div>
       @if($meetings->count() > 0)
         @foreach($meetings as $meeting)
-          <a href="/meeting/show/{{ $meeting->id }}" class="text-normal no-underline hover:no-underline">
-            <div class="border-bottom cover-background cursor-pointer">
-              <div class="p-4 flex flex-row justify-between">
-                <div>
-
-                    <div class="inline-block rounded-full bg-grey-light mr-4 px-2 py-1">
-                      <i class="fas fa-calendar"></i>
-                    </div>
-                    <div class="font-bold inline-block">{{ $meeting->date }}</div>
-                </div>
+          <div class="border-bottom cover-background cursor-pointer">
+            <div class="p-4 flex flex-row justify-between">
+              <div>
+                  <div class="inline-block rounded-full bg-grey-light mr-4 px-2 py-1">
+                    <i class="fas fa-calendar"></i>
+                  </div>
+                  <div class="font-bold inline-block">{{ $meeting->date }}</div>
+              </div>
+              <div>
+                <a href="/meeting/show/{{ $meeting->id }}" class="text-2xl mr-2">
+                  <i class="fas fa-pen-square"></i>
+                </a>
+                <a href="/meeting/send/{{$meeting->id}}" class="text-2xl mr-2">
+                  <i class="fas fa-envelope-square"></i>
+                </a>
+                <a href="/meeting/delete/{{ $meeting->id }}" class="text-2xl mr-2">
+                  <i class="fas fa-minus-square"></i>
+                </a>
               </div>
             </div>
-          </a>
+          </div>
         @endforeach
       @else
         <div class="p-4">

@@ -64181,6 +64181,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 var moment = __webpack_require__(0);
@@ -66063,7 +66064,10 @@ var render = function() {
               "rounded py-2 px-4 text-white text-xl font-bold bg-blue hover:bg-blue-darker cursor-pointer",
             on: { click: _vm.saveMeeting }
           },
-          [_c("i", { staticClass: "fas fa-save" })]
+          [
+            _c("i", { staticClass: "fas fa-save inline-block mr-2" }),
+            _vm._v("\n        Save\n      ")
+          ]
         )
       ])
     ]),

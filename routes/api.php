@@ -23,3 +23,4 @@ Route::middleware('auth:api')->get('/users', function (Request $request) {
 });
 
 Route::middleware('auth:api')->post('/meeting/create', 'MeetingController@store');
+Route::middleware('auth:api')->delete('/meeting/delete/{meeting}', 'MeetingController@delete');

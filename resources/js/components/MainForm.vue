@@ -6,7 +6,8 @@
         </div>
         <div>
           <div class="rounded py-2 px-4 text-white text-xl font-bold bg-blue hover:bg-blue-darker cursor-pointer" @click="saveMeeting">
-            <i class="fas fa-save"></i>
+            <i class="fas fa-save inline-block mr-2"></i>
+            Save
           </div>
         </div>
       </div>

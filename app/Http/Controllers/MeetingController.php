@@ -18,6 +18,9 @@ class MeetingController extends Controller
 
        $meeting = request('meeting_id') ? Meeting::find(request('meeting_id')) : new Meeting();
        $meeting->date = str_replace(['T','Z'],' ', request('meetingDate'));
+
+       $this->deleteTalks($meeting);
+
        $meeting->save();
 
        foreach($request->all() as $type => $talk){
@@ -44,5 +47,21 @@ class MeetingController extends Controller
       }
 
       return view('meeting.show', compact('meeting'));
+    }
+
+    public function delete(Meeting $meeting)
+    {
+      $this->deleteTalks($meeting);
+      $meeting->delete();
+
+      return redirect('/');
+    }
+
+    private function deleteTalks(Meeting $meeting)
+    {
+      foreach($meeting->talks as $talk)
+      {
+        $talk->delete();
+      }
     }
 }
