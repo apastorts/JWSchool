@@ -2,7 +2,7 @@
     <div class="md:w-1/2 sm:w-full m-auto p-2">
       <div class="flex flex-row justify-between">
         <div>
-          <datepicker input-class="m-4 bg-transparent p-2 font-bold text-lg border-bottom" v-model="meetingDay" ></datepicker>
+          <datepicker input-class="m-4 bg-transparent p-2 font-bold text-lg border-bottom" v-model="meetingDate" @input="updateDate" ></datepicker>
         </div>
         <div>
           <div class="rounded py-2 px-4 text-white text-xl font-bold bg-blue hover:bg-blue-darker cursor-pointer" @click="saveMeeting">
@@ -132,7 +132,7 @@
         },
         data(){
           return{
-            meetingDay: moment().day(3).toDate(),
+            meetingDate: moment().day(3).toDate(),
             users: '',
             bibleReading: {
               name: 'Not Assigned'
@@ -191,14 +191,16 @@
                 congregationBible: this.congregationBible.id,
                 secondPart: this.secondPart.id,
                 localNeeds: this.localNeeds.id,
-                meetingDate: this.meetingDay,
+                meetingDate: this.meetingDate,
                 meeting_id: this.meeting ? this.meeting.id : null
               })
               .then(response => (
                 window.location.replace('/')
               ));
           },
-
+          updateDate(){
+            this.meetingDate = moment(this.meetingDate).day(3).toDate();
+          }
         }
     }
 </script>

@@ -16765,6 +16765,16 @@ a {
   color: #044e54;
 }
 
+.main-button {
+  background-color: #2cb1bc;
+  color: white;
+}
+
+.main-button:hover {
+  background-color: #044e54;
+  text-decoration: none;
+}
+
 @media (min-width: 576px) {
   .sm\:list-reset {
     list-style: none;

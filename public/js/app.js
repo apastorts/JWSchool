@@ -64198,7 +64198,7 @@ var moment = __webpack_require__(0);
   },
   data: function data() {
     return {
-      meetingDay: moment().day(3).toDate(),
+      meetingDate: moment().day(3).toDate(),
       users: '',
       bibleReading: {
         name: 'Not Assigned'
@@ -64259,11 +64259,14 @@ var moment = __webpack_require__(0);
         congregationBible: this.congregationBible.id,
         secondPart: this.secondPart.id,
         localNeeds: this.localNeeds.id,
-        meetingDate: this.meetingDay,
+        meetingDate: this.meetingDate,
         meeting_id: this.meeting ? this.meeting.id : null
       }).then(function (response) {
         return window.location.replace('/');
       });
+    },
+    updateDate: function updateDate() {
+      this.meetingDate = moment(this.meetingDate).day(3).toDate();
     }
   }
 });
@@ -66044,12 +66047,13 @@ var render = function() {
               "input-class":
                 "m-4 bg-transparent p-2 font-bold text-lg border-bottom"
             },
+            on: { input: _vm.updateDate },
             model: {
-              value: _vm.meetingDay,
+              value: _vm.meetingDate,
               callback: function($$v) {
-                _vm.meetingDay = $$v
+                _vm.meetingDate = $$v
               },
-              expression: "meetingDay"
+              expression: "meetingDate"
             }
           })
         ],

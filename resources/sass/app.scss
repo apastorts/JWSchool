@@ -107,3 +107,12 @@ body, a {
   background-color: $main-lighter;
   color: $main-darkest;
 }
+
+.main-button{
+  background-color: $main;
+  color:white;
+  &:hover{
+    background-color: $main-darkest;
+    text-decoration: none;
+  }
+}
