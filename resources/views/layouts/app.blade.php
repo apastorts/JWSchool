@@ -38,6 +38,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/meeting/new">New Meeting</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/create">Add Publisher</a>
+                        </li>
                       </ul>
                     @endauth
                     <!-- Right Side Of Navbar -->
