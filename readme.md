@@ -12,5 +12,5 @@ Application to help some Jehovah's Witnesses to organize the Bible School that h
 * [x] Manage Publishers
 * [x] Mail Notifications
 * [x] Print Support
-* [] Add Pop Up Windows for Notifications
-* [] Synchronize meetings with jw.org
+* [ ]  Add Pop Up Windows for Notifications
+* [ ] Synchronize meetings with jw.org
