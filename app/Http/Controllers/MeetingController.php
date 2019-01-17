@@ -31,7 +31,7 @@ class MeetingController extends Controller
              $newTalk->meeting_id = $meeting->id;
              $newTalk->type = $type;
              $newTalk->title = $talk['title'];
-             $newTalk->user_id = $talk['user'];
+             $newTalk->user_id = $talk['user']['id'];
              $newTalk->save();
            }
          }

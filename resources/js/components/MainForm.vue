@@ -22,7 +22,7 @@
                <div class="bibleReading-selection inline-block">
                  {{talk.user.name}}
                </div>
-               <select-user :users=users v-model="treasures[index].user"></select-user>
+               <select-user :users="users" v-model="treasures[index].user"></select-user>
              </div>
            </div>
            <div class="text-center p-2 text-4xl">
@@ -41,7 +41,7 @@
                <div class="bibleReading-selection inline-block">
                  {{talk.user.name}}
                </div>
-               <select-user :users=users v-model="ministry[index].user"></select-user>
+               <select-user :users="users" v-model="ministry[index].user"></select-user>
              </div>
            </div>
            <div class="text-center p-2 text-4xl">
@@ -60,7 +60,7 @@
                <div class="bibleReading-selection inline-block">
                  {{talk.user.name}}
                </div>
-               <select-user :users=users v-model="christianLiving[index].user"></select-user>
+               <select-user :users="users" v-model="christianLiving[index].user"></select-user>
              </div>
            </div>
            <div class="text-center p-2 text-4xl">

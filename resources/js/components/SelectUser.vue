@@ -35,7 +35,7 @@ export default {
   data(){
     return{
       show: false,
-      allUsers: ''
+      allUsers: this.users
     }
   },
   watch:{

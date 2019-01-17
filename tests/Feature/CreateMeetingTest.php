@@ -25,27 +25,37 @@ class CreateMeeting extends TestCase
               'treasures' => [
                 'talk1' => [
                   'title' => '',
-                  'user' => 1
+                  'user' => [
+                    'id' => 1
+                  ]
                 ],
                 'talk2' => [
                   'title' => '',
-                  'user' => 2
+                  'user' => [
+                    'id' => 1
+                  ]
                 ]
               ],
               'ministry' => [
                 'talk1' => [
                   'title' => '',
-                  'user' => 1
+                  'user' => [
+                    'id' => 1
+                  ]
                 ],
               ],
               'christianLiving' => [
                 'talk1' => [
                   'title' => '',
-                  'user' => 1
+                  'user' => [
+                    'id' => 1
+                  ]
                 ],
                 'talk2' => [
                   'title' => '',
-                  'user' => 2
+                  'user' => [
+                    'id' => 1
+                  ]
                 ]
               ],
               'meetingDate' => now()
