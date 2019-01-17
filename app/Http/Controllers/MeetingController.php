@@ -16,21 +16,24 @@ class MeetingController extends Controller
          'meetingDate' => 'required'
        ]);
 
-       $meeting = request('meeting_id') ? Meeting::find(request('meeting_id')) : new Meeting();
-       $meeting->date = str_replace(['T','Z'],' ', request('meetingDate')['date']);
+       $meeting = Meeting::findOrNew(request('meeting_id'));
+       $meeting->date = str_replace(['T','Z'],' ', request('meetingDate'));
        $meeting->user_id = auth()->user()->id;
        $this->deleteTalks($meeting);
 
        $meeting->save();
 
-       foreach($request->all() as $type => $talk){
-         if($talk && $type != 'meetingDate' && $type != 'meeting_id')
+       foreach($request->all() as $type => $talks){
+         if($talks && $type != 'meetingDate' && $type != 'meeting_id')
          {
-           $newTalk = new Talk();
-           $newTalk->meeting_id = $meeting->id;
-           $newTalk->type = $type;
-           $newTalk->user_id = $talk;
-           $newTalk->save();
+           foreach($talks as $talk){
+             $newTalk = new Talk();
+             $newTalk->meeting_id = $meeting->id;
+             $newTalk->type = $type;
+             $newTalk->title = $talk['title'];
+             $newTalk->user_id = $talk['user'];
+             $newTalk->save();
+           }
          }
        }
 
@@ -42,8 +45,8 @@ class MeetingController extends Controller
       $meeting->talks = $meeting->talks;
 
       foreach($meeting->talks as $talk){
-        $talk->user = $talk->user;
-        $talk->user->role = $talk->user->role;
+        $talk->user = $talk->user ? $talk->user : null;
+        $talk->user->role = $talk->user->role ? $talk->user->role : null;
       }
 
       return view('meeting.show', compact('meeting'));
