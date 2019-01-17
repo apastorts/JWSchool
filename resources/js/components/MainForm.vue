@@ -16,32 +16,17 @@
            <div class="treasures p-2 text-center text-4xl">
              Treasures From God's Word
            </div>
-           <div class="flex justify-between text-lg">
-             <div class="p-2 font-bold block">Treasures Talk</div>
+           <div class="flex justify-between text-lg" v-for="(talk, index) in treasures">
+             <input class="p-2 font-bold block" v-model="treasures[index].title" />
              <div class="p-2 font-bold block">
                <div class="bibleReading-selection inline-block">
-                 {{treasuresTalk.name}}
+                 {{talk.user.name}}
                </div>
-               <select-user :users=users v-model="treasuresTalk"></select-user>
+               <select-user :users=users v-model="treasures[index].user"></select-user>
              </div>
            </div>
-           <div class="flex justify-between text-lg">
-             <div class="p-2 font-bold block">Digging For Spiritual Gems</div>
-             <div class="p-2 font-bold block">
-               <div class="bibleReading-selection inline-block">
-                 {{digging.name}}
-               </div>
-               <select-user :users=users v-model="digging"></select-user>
-             </div>
-           </div>
-           <div class="flex justify-between text-lg">
-             <div class="p-2 font-bold block">Bible Reading</div>
-             <div class="p-2 font-bold block">
-               <div class="bibleReading-selection inline-block">
-                 {{bibleReading.name}}
-               </div>
-               <select-user :users=users v-model="bibleReading"></select-user>
-             </div>
+           <div class="text-center p-2 text-4xl">
+             <i class="fas fa-plus-circle cursor-pointer text-blue" @click="newField('treasures')"></i>
            </div>
          </div>
        </div>
@@ -50,32 +35,17 @@
            <div class="apply-yourself p-2 text-center text-4xl">
              Apply Yourself To The Field Ministry
            </div>
-           <div class="flex justify-between text-lg">
-             <div class="p-2 font-bold block">Initial Call</div>
+           <div class="flex justify-between text-lg" v-for="(talk, index) in ministry">
+             <input class="p-2 font-bold block" v-model="ministry[index].title" />
              <div class="p-2 font-bold block">
                <div class="bibleReading-selection inline-block">
-                 {{initial.name}}
+                 {{talk.user.name}}
                </div>
-               <select-user :users=users v-model="initial"></select-user>
+               <select-user :users=users v-model="ministry[index].user"></select-user>
              </div>
            </div>
-           <div class="flex justify-between text-lg">
-             <div class="p-2 font-bold block">First Return Visit</div>
-             <div class="p-2 font-bold block">
-               <div class="firstRV-selection inline-block">
-                 {{firstRV.name}}
-               </div>
-               <select-user :users=users v-model="firstRV"></select-user>
-             </div>
-           </div>
-           <div class="flex justify-between text-lg">
-             <div class="p-2 font-bold block">Bible Study / Talk</div>
-             <div class="p-2 font-bold block">
-               <div class="talk-selection inline-block">
-                 {{talk.name}}
-               </div>
-               <select-user :users=users v-model="talk"></select-user>
-             </div>
+           <div class="text-center p-2 text-4xl">
+             <i class="fas fa-plus-circle cursor-pointer text-blue" @click="newField('ministry')"></i>
            </div>
          </div>
        </div>
@@ -84,35 +54,20 @@
            <div class="living p-2 text-center text-4xl">
              Living As Christians
            </div>
-           <div class="flex justify-between text-lg">
-             <div class="p-2 font-bold block">Local Needs / Talk</div>
+           <div class="flex justify-between text-lg" v-for="(talk, index) in christianLiving">
+             <input class="p-2 font-bold block" v-model="christianLiving[index].title" />
              <div class="p-2 font-bold block">
-               <div class="talk-selection inline-block">
-                 {{localNeeds.name}}
+               <div class="bibleReading-selection inline-block">
+                 {{talk.user.name}}
                </div>
-               <select-user :users=users v-model="localNeeds"></select-user>
+               <select-user :users=users v-model="christianLiving[index].user"></select-user>
              </div>
            </div>
-           <div class="flex justify-between text-lg">
-             <div class="p-2 font-bold block">2nd Part</div>
-             <div class="p-2 font-bold block">
-               <div class="talk-selection inline-block">
-                 {{secondPart.name}}
-               </div>
-               <select-user :users=users v-model="secondPart"></select-user>
-             </div>
+           <div class="text-center p-2 text-4xl">
+             <i class="fas fa-plus-circle cursor-pointer text-blue" @click="newField('christianLiving')"></i>
            </div>
-           <div class="flex justify-between text-lg">
-             <div class="p-2 font-bold block">Congregation Bible Study</div>
-             <div class="p-2 font-bold block">
-               <div class="talk-selection inline-block">
-                 {{congregationBible.name}}
-               </div>
-               <select-user :users=users v-model="congregationBible"></select-user>
-             </div>
-           </div>
-         </div>
        </div>
+     </div>
     </div>
 </template>
 
@@ -134,33 +89,9 @@
           return{
             meetingDate: moment().day(3).toDate(),
             users: '',
-            bibleReading: {
-              name: 'Not Assigned'
-            },
-            treasuresTalk: {
-              name: 'Not Assigned'
-            },
-            digging: {
-              name: 'Not Assigned'
-            },
-            initial: {
-              name: 'Not Assigned'
-            },
-            firstRV: {
-              name: 'Not Assigned'
-            },
-            talk: {
-              name: 'Not Assigned'
-            },
-            congregationBible: {
-              name: 'Not Assigned'
-            },
-            secondPart: {
-              name: 'Not Assigned'
-            },
-            localNeeds: {
-              name: 'Not Assigned'
-            },
+            treasures: [],
+            ministry: [],
+            christianLiving: []
           }
         },
         mounted() {
@@ -171,9 +102,7 @@
             if(this.meeting){
               this.meeting.talks.forEach((talk) => {
                 console.log(talk + ' done');
-                this[talk.type].name = talk.user.name;
-                this[talk.type].id = talk.user.id;
-                this[talk.type].role = talk.user.role;
+                this[talk.type].push(talk);
               });
               this.meetingDay = this.meeting.date;
             }
@@ -182,16 +111,10 @@
           saveMeeting(){
             axios
               .post('/api/meeting/create',{
-                bibleReading: this.bibleReading.id,
-                treasuresTalk: this.treasuresTalk.id,
-                digging: this.digging.id,
-                initial: this.initial.id,
-                firstRV: this.firstRV.id,
-                talk: this.talk.id,
-                congregationBible: this.congregationBible.id,
-                secondPart: this.secondPart.id,
-                localNeeds: this.localNeeds.id,
-                meetingDate: this.meetingDate,
+                treasures: this.treasures,
+                ministry: this.ministry,
+                christianLiving: this.christianLiving,
+                meetingDate: this.meetingDate ,
                 meeting_id: this.meeting ? this.meeting.id : null
               })
               .then(response => (
@@ -200,6 +123,17 @@
           },
           updateDate(){
             this.meetingDate = moment(this.meetingDate).day(3).toDate();
+          },
+          newField(type){
+            console.log(type);
+            let emptyTalk = {
+                title: 'Introduce Titulo',
+                user: {
+                  name: 'Sin Asignar'
+                }
+              };
+            this[type].push(emptyTalk);
+            console.log(this[type]);
           }
         }
     }
