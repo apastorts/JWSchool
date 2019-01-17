@@ -1,7 +1,7 @@
 @component('mail::message')
 # Tiene una asignación
 
-En la reunion del {{ $meeting->day.' '.$meeting->englishDayOfWeek.' '.$meeting->englishMonth }} para el Grupo de habla Hispana de Woden
+En la reunion del {{ $meeting->englishDayOfWeek..' '.$meeting->day' '.$meeting->englishMonth }} para el Grupo de habla Hispana de Woden
 
 Se le ha solicitado realizar la siguiente asignación:
 - **{{ $talk->title }}**

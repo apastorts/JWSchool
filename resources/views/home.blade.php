@@ -12,7 +12,7 @@
                   <div class="inline-block rounded-full bg-grey-light mr-4 px-2 py-1">
                     <i class="fas fa-calendar"></i>
                   </div>
-                  <div class="font-bold inline-block">{{ $meeting->date }}</div>
+                  <div class="font-bold inline-block">{{ carbon($meeting->date)->englishDayOfWeek.' '.carbon($meeting->date)->day.' '.carbon($meeting->date)->englishMonth.' '.carbon($meeting->date)->year }}</div>
               </div>
               <div>
                 <a href="/meeting/show/{{ $meeting->id }}" class="text-2xl mr-2">
