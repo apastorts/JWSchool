@@ -19,6 +19,7 @@ Route::get('/meeting/new', 'HomeController@new');
 Route::get('/meeting/show/{meeting}', 'MeetingController@show');
 
 Route::middleware('auth')->get('/meeting/delete/{meeting}', 'MeetingController@delete');
+Route::middleware('auth')->get('/meeting/send/{meeting}', 'SendMailController');
 Route::middleware('auth')->get('/user/create', function(){
   $roles = Role::all();
   return view('auth.register', compact('roles'));

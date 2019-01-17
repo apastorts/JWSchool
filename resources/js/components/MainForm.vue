@@ -4,7 +4,7 @@
         <div>
           <datepicker input-class="m-4 bg-transparent p-2 font-bold text-lg border-bottom" v-model="meetingDate" @input="updateDate" ></datepicker>
         </div>
-        <div>
+        <div class="save-button">
           <div class="rounded py-2 px-4 text-white text-xl font-bold bg-blue hover:bg-blue-darker cursor-pointer" @click="saveMeeting">
             <i class="fas fa-save inline-block mr-2"></i>
             Save
@@ -17,7 +17,7 @@
              Tesoros de la Biblia
            </div>
            <div class="flex justify-between text-lg" v-for="(talk, index) in treasures">
-             <input class="p-2 font-bold block" v-model="treasures[index].title" />
+             <input class="p-2 font-bold block bg-grey-lightest" v-model="treasures[index].title" />
              <div class="p-2 font-bold block">
                <div class="bibleReading-selection inline-block">
                  {{talk.user.name}}
@@ -36,7 +36,7 @@
              Seamos Mejores Maestros
            </div>
            <div class="flex justify-between text-lg" v-for="(talk, index) in ministry">
-             <input class="p-2 font-bold block" v-model="ministry[index].title" />
+             <input class="p-2 font-bold block bg-grey-lightest" v-model="ministry[index].title" />
              <div class="p-2 font-bold block">
                <div class="bibleReading-selection inline-block">
                  {{talk.user.name}}
@@ -55,7 +55,7 @@
              Nuestra Vida Cristiana
            </div>
            <div class="flex justify-between text-lg" v-for="(talk, index) in christianLiving">
-             <input class="p-2 font-bold block" v-model="christianLiving[index].title" />
+             <input class="p-2 font-bold block bg-grey-lightest" v-model="christianLiving[index].title" />
              <div class="p-2 font-bold block">
                <div class="bibleReading-selection inline-block">
                  {{talk.user.name}}
@@ -87,7 +87,7 @@
         },
         data(){
           return{
-            meetingDate: moment().day(3).toDate(),
+            meetingDate: this.meeting.date ? this.meeting.date : moment().day(3).toDate(),
             users: '',
             treasures: [],
             ministry: [],
@@ -104,7 +104,6 @@
                 console.log(talk + ' done');
                 this[talk.type].push(talk);
               });
-              this.meetingDay = this.meeting.date;
             }
         },
         methods:{

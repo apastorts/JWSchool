@@ -47967,7 +47967,8 @@ function applyToTag (styleElement, obj) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(142);
-module.exports = __webpack_require__(184);
+__webpack_require__(184);
+module.exports = __webpack_require__(185);
 
 
 /***/ }),
@@ -64710,7 +64711,7 @@ var moment = __webpack_require__(0);
   },
   data: function data() {
     return {
-      meetingDate: moment().day(3).toDate(),
+      meetingDate: this.meeting.date ? this.meeting.date : moment().day(3).toDate(),
       users: '',
       treasures: [],
       ministry: [],
@@ -64729,7 +64730,6 @@ var moment = __webpack_require__(0);
         console.log(talk + ' done');
         _this[talk.type].push(talk);
       });
-      this.meetingDay = this.meeting.date;
     }
   },
 
@@ -66553,7 +66553,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("div", [
+      _c("div", { staticClass: "save-button" }, [
         _c(
           "div",
           {
@@ -66589,7 +66589,7 @@ var render = function() {
                     expression: "treasures[index].title"
                   }
                 ],
-                staticClass: "p-2 font-bold block",
+                staticClass: "p-2 font-bold block bg-grey-lightest",
                 domProps: { value: _vm.treasures[index].title },
                 on: {
                   input: function($event) {
@@ -66670,7 +66670,7 @@ var render = function() {
                     expression: "ministry[index].title"
                   }
                 ],
-                staticClass: "p-2 font-bold block",
+                staticClass: "p-2 font-bold block bg-grey-lightest",
                 domProps: { value: _vm.ministry[index].title },
                 on: {
                   input: function($event) {
@@ -66749,7 +66749,7 @@ var render = function() {
                     expression: "christianLiving[index].title"
                   }
                 ],
-                staticClass: "p-2 font-bold block",
+                staticClass: "p-2 font-bold block bg-grey-lightest",
                 domProps: { value: _vm.christianLiving[index].title },
                 on: {
                   input: function($event) {
@@ -67391,6 +67391,12 @@ if (false) {
 
 /***/ }),
 /* 184 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 185 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
