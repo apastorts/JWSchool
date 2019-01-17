@@ -6,10 +6,11 @@ Application to help some Jehovah's Witnesses to organize the Bible School that h
 
 ### Table of Contents
 
-[x] Create Meetings
-[x] Give assignments
-[x] Manage Publishers
-[x] Mail Notifications
-[x] Print Support
-[] Add Pop Up Windows for Notifications
-[] Synchronize meetings with jw.org
+
+* [x]  Create Meetings
+* [x] Give assignments
+* [x] Manage Publishers
+* [x] Mail Notifications
+* [x] Print Support
+* [] Add Pop Up Windows for Notifications
+* [] Synchronize meetings with jw.org
