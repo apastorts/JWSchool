@@ -14,7 +14,7 @@
        <div>
          <div class="w-full">
            <div class="treasures p-2 text-center text-4xl">
-             Treasures From God's Word
+             Tesoros de la Biblia
            </div>
            <div class="flex justify-between text-lg" v-for="(talk, index) in treasures">
              <input class="p-2 font-bold block" v-model="treasures[index].title" />
@@ -33,7 +33,7 @@
        <div>
          <div class="w-full">
            <div class="apply-yourself p-2 text-center text-4xl">
-             Apply Yourself To The Field Ministry
+             Seamos Mejores Maestros
            </div>
            <div class="flex justify-between text-lg" v-for="(talk, index) in ministry">
              <input class="p-2 font-bold block" v-model="ministry[index].title" />
@@ -52,7 +52,7 @@
        <div>
          <div class="w-full">
            <div class="living p-2 text-center text-4xl">
-             Living As Christians
+             Nuestra Vida Cristiana
            </div>
            <div class="flex justify-between text-lg" v-for="(talk, index) in christianLiving">
              <input class="p-2 font-bold block" v-model="christianLiving[index].title" />

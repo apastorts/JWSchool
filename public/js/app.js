@@ -66575,7 +66575,7 @@ var render = function() {
         { staticClass: "w-full" },
         [
           _c("div", { staticClass: "treasures p-2 text-center text-4xl" }, [
-            _vm._v("\n         Treasures From God's Word\n       ")
+            _vm._v("\n         Tesoros de la Biblia\n       ")
           ]),
           _vm._v(" "),
           _vm._l(_vm.treasures, function(talk, index) {
@@ -66656,7 +66656,7 @@ var render = function() {
           _c(
             "div",
             { staticClass: "apply-yourself p-2 text-center text-4xl" },
-            [_vm._v("\n         Apply Yourself To The Field Ministry\n       ")]
+            [_vm._v("\n         Seamos Mejores Maestros\n       ")]
           ),
           _vm._v(" "),
           _vm._l(_vm.ministry, function(talk, index) {
@@ -66735,7 +66735,7 @@ var render = function() {
         { staticClass: "w-full" },
         [
           _c("div", { staticClass: "living p-2 text-center text-4xl" }, [
-            _vm._v("\n         Living As Christians\n       ")
+            _vm._v("\n         Nuestra Vida Cristiana\n       ")
           ]),
           _vm._v(" "),
           _vm._l(_vm.christianLiving, function(talk, index) {
