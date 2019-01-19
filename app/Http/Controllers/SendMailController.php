@@ -17,7 +17,8 @@ class SendMailController extends Controller
    public function __invoke(Meeting $meeting)
    {
      foreach ($meeting->talks as $talk){
-       $talk->user->notify(new TalkAssignment($talk));
+       if($talk->user) $talk->user->notify(new TalkAssignment($talk, $talk->user));
+       if($talk->partner) $talk->partner->notify(new TalkAssignment($talk, $talk->partner));
      }
 
      return redirect('/');

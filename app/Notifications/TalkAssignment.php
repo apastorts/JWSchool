@@ -17,10 +17,11 @@ class TalkAssignment extends Notification
      *
      * @return void
      */
-    public function __construct($talk)
+    public function __construct($talk, $recipient)
     {
         $this->talk = $talk;
         $this->meeting = Carbon::parse($talk->meeting->date);
+        $this->recipient = $recipient;
     }
 
     /**
@@ -42,7 +43,7 @@ class TalkAssignment extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->markdown('mail.talk.assigned', [ 'talk' => $this->talk, 'meeting' => $this->meeting]);
+        return (new MailMessage)->markdown('mail.talk.assigned', [ 'talk' => $this->talk, 'meeting' => $this->meeting, 'recipient' => $this->recipient]);
     }
 
     /**
