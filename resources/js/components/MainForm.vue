@@ -20,9 +20,13 @@
              <input class="p-2 font-bold block bg-grey-lightest" v-model="treasures[index].title" />
              <div class="p-2 font-bold block">
                <div class="bibleReading-selection inline-block">
-                 {{talk.user.name}}
+                 {{ talk.user ? talk.user.name : ''}}
                </div>
-               <select-user :users="users" v-model="treasures[index].user"></select-user>
+               <select-user :users="users" v-model="treasures[index].user"></select-user> /
+               <div class="bibleReading-selection inline-block">
+                 {{ talk.partner ? talk.partner.name : ''}}
+               </div>
+               <select-user :users="users" v-model="treasures[index].partner"></select-user>
              </div>
            </div>
            <div class="text-center p-2 text-4xl">
@@ -39,9 +43,13 @@
              <input class="p-2 font-bold block bg-grey-lightest" v-model="ministry[index].title" />
              <div class="p-2 font-bold block">
                <div class="bibleReading-selection inline-block">
-                 {{talk.user.name}}
+                 {{ talk.user ? talk.user.name : ''}}
                </div>
-               <select-user :users="users" v-model="ministry[index].user"></select-user>
+               <select-user :users="users" v-model="ministry[index].user"></select-user> /
+               <div class="bibleReading-selection inline-block">
+                 {{ talk.partner ? talk.partner.name : ''}}
+               </div>
+               <select-user :users="users" v-model="ministry[index].partner"></select-user>
              </div>
            </div>
            <div class="text-center p-2 text-4xl">
@@ -58,9 +66,13 @@
              <input class="p-2 font-bold block bg-grey-lightest" v-model="christianLiving[index].title" />
              <div class="p-2 font-bold block">
                <div class="bibleReading-selection inline-block">
-                 {{talk.user.name}}
+                 {{ talk.user ? talk.user.name : ''}}
                </div>
-               <select-user :users="users" v-model="christianLiving[index].user"></select-user>
+               <select-user :users="users" v-model="christianLiving[index].user"></select-user> /
+               <div class="bibleReading-selection inline-block">
+                 {{ talk.partner ? talk.partner.name : ''}}
+               </div>
+               <select-user :users="users" v-model="christianLiving[index].partner"></select-user>
              </div>
            </div>
            <div class="text-center p-2 text-4xl">
@@ -87,7 +99,7 @@
         },
         data(){
           return{
-            meetingDate: this.meeting.date ? this.meeting.date : moment().day(3).toDate(),
+            meetingDate: this.meeting  ? this.meeting.date : moment().day(3).toDate(),
             users: '',
             treasures: [],
             ministry: [],
@@ -128,7 +140,12 @@
             let emptyTalk = {
                 title: 'Introduce Titulo',
                 user: {
+                  id: null,
                   name: 'Sin Asignar'
+                },
+                partner: {
+                  id: null,
+                  name:''
                 }
               };
             this[type].push(emptyTalk);

@@ -19,7 +19,7 @@
             <div class="text-grey mr-2 inline-block">
               {{ user.role.name }}
             </div>
-            <i class="fas fa-check-circle inline-block" v-if="value.id == user.id"></i>
+            <i class="fas fa-check-circle inline-block" v-if="user.id == null ? (value.id == user.id) : false"></i>
           </div>
         </div>
       </div>

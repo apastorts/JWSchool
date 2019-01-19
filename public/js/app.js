@@ -64695,6 +64695,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 var moment = __webpack_require__(0);
@@ -64711,7 +64723,7 @@ var moment = __webpack_require__(0);
   },
   data: function data() {
     return {
-      meetingDate: this.meeting.date ? this.meeting.date : moment().day(3).toDate(),
+      meetingDate: this.meeting ? this.meeting.date : moment().day(3).toDate(),
       users: '',
       treasures: [],
       ministry: [],
@@ -64753,7 +64765,12 @@ var moment = __webpack_require__(0);
       var emptyTalk = {
         title: 'Introduce Titulo',
         user: {
+          id: null,
           name: 'Sin Asignar'
+        },
+        partner: {
+          id: null,
+          name: ''
         }
       };
       this[type].push(emptyTalk);
@@ -66611,7 +66628,7 @@ var render = function() {
                     [
                       _vm._v(
                         "\n             " +
-                          _vm._s(talk.user.name) +
+                          _vm._s(talk.user ? talk.user.name : "") +
                           "\n           "
                       )
                     ]
@@ -66625,6 +66642,29 @@ var render = function() {
                         _vm.$set(_vm.treasures[index], "user", $$v)
                       },
                       expression: "treasures[index].user"
+                    }
+                  }),
+                  _vm._v(" /\n           "),
+                  _c(
+                    "div",
+                    { staticClass: "bibleReading-selection inline-block" },
+                    [
+                      _vm._v(
+                        "\n             " +
+                          _vm._s(talk.partner ? talk.partner.name : "") +
+                          "\n           "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("select-user", {
+                    attrs: { users: _vm.users },
+                    model: {
+                      value: _vm.treasures[index].partner,
+                      callback: function($$v) {
+                        _vm.$set(_vm.treasures[index], "partner", $$v)
+                      },
+                      expression: "treasures[index].partner"
                     }
                   })
                 ],
@@ -66692,7 +66732,7 @@ var render = function() {
                     [
                       _vm._v(
                         "\n             " +
-                          _vm._s(talk.user.name) +
+                          _vm._s(talk.user ? talk.user.name : "") +
                           "\n           "
                       )
                     ]
@@ -66706,6 +66746,29 @@ var render = function() {
                         _vm.$set(_vm.ministry[index], "user", $$v)
                       },
                       expression: "ministry[index].user"
+                    }
+                  }),
+                  _vm._v(" /\n           "),
+                  _c(
+                    "div",
+                    { staticClass: "bibleReading-selection inline-block" },
+                    [
+                      _vm._v(
+                        "\n             " +
+                          _vm._s(talk.partner ? talk.partner.name : "") +
+                          "\n           "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("select-user", {
+                    attrs: { users: _vm.users },
+                    model: {
+                      value: _vm.ministry[index].partner,
+                      callback: function($$v) {
+                        _vm.$set(_vm.ministry[index], "partner", $$v)
+                      },
+                      expression: "ministry[index].partner"
                     }
                   })
                 ],
@@ -66775,7 +66838,7 @@ var render = function() {
                     [
                       _vm._v(
                         "\n             " +
-                          _vm._s(talk.user.name) +
+                          _vm._s(talk.user ? talk.user.name : "") +
                           "\n           "
                       )
                     ]
@@ -66789,6 +66852,29 @@ var render = function() {
                         _vm.$set(_vm.christianLiving[index], "user", $$v)
                       },
                       expression: "christianLiving[index].user"
+                    }
+                  }),
+                  _vm._v(" /\n           "),
+                  _c(
+                    "div",
+                    { staticClass: "bibleReading-selection inline-block" },
+                    [
+                      _vm._v(
+                        "\n             " +
+                          _vm._s(talk.partner ? talk.partner.name : "") +
+                          "\n           "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("select-user", {
+                    attrs: { users: _vm.users },
+                    model: {
+                      value: _vm.christianLiving[index].partner,
+                      callback: function($$v) {
+                        _vm.$set(_vm.christianLiving[index], "partner", $$v)
+                      },
+                      expression: "christianLiving[index].partner"
                     }
                   })
                 ],
@@ -67178,7 +67264,9 @@ var render = function() {
                         ]
                       ),
                       _vm._v(" "),
-                      _vm.value.id == user.id
+                      (user.id == null
+                      ? _vm.value.id == user.id
+                      : false)
                         ? _c("i", {
                             staticClass: "fas fa-check-circle inline-block"
                           })

@@ -15,4 +15,8 @@ class Talk extends Model
     public function meeting(){
       return $this->belongsTo('App\Meeting');
     }
+
+    public function partner(){
+      return $this->belongsTo('App\User', 'partner_id');
+    }
 }

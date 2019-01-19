@@ -32,6 +32,7 @@ class MeetingController extends Controller
              $newTalk->type = $type;
              $newTalk->title = $talk['title'];
              $newTalk->user_id = $talk['user']['id'];
+             $newTalk->partner_id = $talk['partner']['id'];
              $newTalk->save();
            }
          }
@@ -45,8 +46,14 @@ class MeetingController extends Controller
       $meeting->talks = $meeting->talks;
 
       foreach($meeting->talks as $talk){
-        $talk->user = $talk->user ? $talk->user : null;
-        $talk->user->role = $talk->user->role ? $talk->user->role : null;
+        if($talk->user){
+          $talk->user = $talk->user ? $talk->user : null;
+          $talk->user->role = $talk->user ? $talk->user->role : null;
+        }
+        if($talk->partner){
+          $talk->partner = $talk->partner ? $talk->partner : null;
+          $talk->partner->role = $talk->partner ? $talk->partner->role : null;
+        }  
       }
 
       return view('meeting.show', compact('meeting'));
