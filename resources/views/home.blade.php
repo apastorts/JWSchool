@@ -21,9 +21,29 @@
                 <a href="/meeting/send/{{$meeting->id}}" class="text-2xl mr-2">
                   <i class="fas fa-envelope-square"></i>
                 </a>
-                <a href="/meeting/delete/{{ $meeting->id }}" class="text-2xl mr-2">
+                <button class="text-2xl mr-2" data-toggle="modal" data-target="#modal-{{ $meeting->id }}">
                   <i class="fas fa-minus-square"></i>
-                </a>
+                </button>
+              </div>
+            </div>
+          </div>
+            <!-- Modal -->
+          <div class="modal fade" id="modal-{{$meeting->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-{{$meeting->id}}" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Delete Meeting</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Do you want to <strong>delete</strong> the <strong>{{ carbon($meeting->date)->englishDayOfWeek.' '.carbon($meeting->date)->day.' '.carbon($meeting->date)->englishMonth.' '.carbon($meeting->date)->year }}</strong> meeting?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <a href="/meeting/delete/{{ $meeting->id }}" class="btn btn-danger">Delete</a>
+                </div>
               </div>
             </div>
           </div>
