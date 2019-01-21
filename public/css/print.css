@@ -1,1 +1,6 @@
-.fa-plus,.fa-plus-circle,.save-button{display:none}
+.fa-plus-circle,
+.save-button,
+.fa-plus,
+.fa-minus-circle {
+  display: none;
+}

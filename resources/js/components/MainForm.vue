@@ -17,7 +17,12 @@
              Tesoros de la Biblia
            </div>
            <div class="flex justify-between text-lg" v-for="(talk, index) in treasures">
-             <input class="p-2 font-bold block bg-grey-lightest" v-model="treasures[index].title" />
+             <div>
+               <div class="text-red text-left inline-block w-auto">
+                 <i class="fas fa-minus-circle cursor-pointer text-left w-auto" @click="removeField('treasures',index)"></i>
+               </div>
+               <input class="p-2 font-bold inline-block bg-grey-lightest" v-model="treasures[index].title" />
+             </div>
              <div class="p-2 font-bold block">
                <div class="bibleReading-selection inline-block">
                  {{ talk.user ? talk.user.name : ''}}
@@ -40,7 +45,12 @@
              Seamos Mejores Maestros
            </div>
            <div class="flex justify-between text-lg" v-for="(talk, index) in ministry">
-             <input class="p-2 font-bold block bg-grey-lightest" v-model="ministry[index].title" />
+             <div>
+               <div class="text-red text-left inline-block w-auto">
+                 <i class="fas fa-minus-circle cursor-pointer text-left w-auto" @click="removeField('ministry',index)"></i>
+               </div>
+               <input class="p-2 font-bold inline-block bg-grey-lightest" v-model="ministry[index].title" />
+             </div>
              <div class="p-2 font-bold block">
                <div class="bibleReading-selection inline-block">
                  {{ talk.user ? talk.user.name : ''}}
@@ -63,7 +73,12 @@
              Nuestra Vida Cristiana
            </div>
            <div class="flex justify-between text-lg" v-for="(talk, index) in christianLiving">
-             <input class="p-2 font-bold block bg-grey-lightest" v-model="christianLiving[index].title" />
+             <div>
+               <div class="text-red text-left inline-block w-auto">
+                 <i class="fas fa-minus-circle cursor-pointer text-left w-auto" @click="removeField('christianLiving',index)"></i>
+               </div>
+               <input class="p-2 font-bold inline-block bg-grey-lightest" v-model="christianLiving[index].title" />
+             </div>
              <div class="p-2 font-bold block">
                <div class="bibleReading-selection inline-block">
                  {{ talk.user ? talk.user.name : ''}}
@@ -134,6 +149,9 @@
           },
           updateDate(){
             this.meetingDate = moment(this.meetingDate).day(3).toDate();
+          },
+          removeField(type,index){
+            this[type].splice(index,1);
           },
           newField(type){
             console.log(type);
