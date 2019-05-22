@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Meeting;
+use Apastorts\JWGetter\Model\Schedule;
+use App\MeetingService;
 
 class HomeController extends Controller
 {
@@ -31,6 +33,12 @@ class HomeController extends Controller
 
     public function new()
     {
-      return view('meeting.new');
+        if(Meeting::where('date', now()->startOfWeek())->count() == 0){
+            $meeting = MeetingService::createMeeting(Schedule::where('date', now()->startOfWeek())->first());
+        }
+        else{
+            $meeting = Meeting::where('date', now()->startOfWeek())->first();
+        }
+        return view('meeting.show', compact('meeting'));
     }
 }

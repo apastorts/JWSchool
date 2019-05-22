@@ -8,6 +8,8 @@ class Meeting extends Model
 {
     protected $table = 'meetings';
 
+    protected $with = ['talks'];
+
     public function talks()
     {
       return $this->hasMany(Talk::class);
