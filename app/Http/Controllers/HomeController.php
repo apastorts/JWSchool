@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Meeting;
 use Apastorts\JWGetter\Model\Schedule;
 use App\MeetingService;
+use App\Http\Resources\Meeting as MeetingResource;
 
 class HomeController extends Controller
 {
@@ -31,10 +32,19 @@ class HomeController extends Controller
         return view('home', compact('meetings'));
     }
 
+    public function find($date)
+    {
+        $date = carbon($date);
+        $schedule= Schedule::where('date', $date->startOfWeek())->first();
+        $meeting = $schedule ? MeetingService::createMeeting($schedule) : null;
+        return $meeting ? new MeetingResource($meeting) : null;
+    }
+
     public function new()
     {
         if(Meeting::where('date', now()->startOfWeek())->count() == 0){
-            $meeting = MeetingService::createMeeting(Schedule::where('date', now()->startOfWeek())->first());
+            $schedule= Schedule::where('date', now()->startOfWeek())->first();
+            $meeting = $schedule ? MeetingService::createMeeting($schedule) : null;
         }
         else{
             $meeting = Meeting::where('date', now()->startOfWeek())->first();

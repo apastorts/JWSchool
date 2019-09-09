@@ -121,7 +121,7 @@
             christianLiving: []
           }
         },
-        mounted() {
+        created() {
           axios
             .get('/api/users')
             .then(response => (this.users = response.data.data));
@@ -149,6 +149,18 @@
           },
           updateDate(){
             this.meetingDate = moment(this.meetingDate).day(3).toDate();
+            let date = moment(this.meetingDate).day(3).format('YYYY-MM-DD');
+            axios
+              .post('/schedule/' + date)
+              .then(response => {
+                this.treasures = [];
+                this.ministry = [];
+                this.christianLiving = [];
+                response.data.data.talks.forEach((talk) => {
+                  console.log(talk + ' done');
+                  this[talk.type].push(talk);
+                });
+              });
           },
           removeField(type,index){
             this[type].splice(index,1);
