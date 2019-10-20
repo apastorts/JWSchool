@@ -27,4 +27,4 @@ Application to help some Jehovah's Witnesses to organize the Bible School that h
 ## Steps to synchronize with wol.org
 
 - Run ``` php artisan get:midweek {meeting date} {es/en} ```
-- This will save into the database the midweek meeting from that week in the language of your choice (Onlye Spanish or English available)
+- This will save into the database the midweek meeting from that week in the language of your choice (Only Spanish or English available)
