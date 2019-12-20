@@ -24,6 +24,20 @@ Application to help some Jehovah's Witnesses to organize the Bible School that h
 - ``` php artisan migrate ```
 - Go to http://localhost:8000
 
+## Create the first user account
+
+- ``` php artisan tinker ```
+
+```
+$cong = factory('App\Congregation')->create(['name' => 'TODO']);
+
+$role = factory('App\Role')->create(['name' => 'Elder']);
+
+$user = factory('App\User')->create(['name' => 'TODO', 'email' => 'todo@example.com', 'congregation_id' => $cong->id, 'role_id' => $role->id, 'password' => bcrypt('secret')]);
+```
+
+Then log in using `todo@example.com` and password `secret`, or whichever settings you used above.
+
 ## Steps to synchronize with wol.org
 
 - Run ``` php artisan get:midweek {meeting date} {es/en} ```
