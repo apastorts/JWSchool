@@ -43,12 +43,13 @@ class HomeController extends Controller
     public function new()
     {
         if(Meeting::where('date', now()->startOfWeek())->count() == 0){
-            $schedule= Schedule::where('date', now()->startOfWeek())->first();
+            $schedule = Schedule::where('date', now()->startOfWeek())->first();
             $meeting = $schedule ? MeetingService::createMeeting($schedule) : null;
         }
         else{
             $meeting = Meeting::where('date', now()->startOfWeek())->first();
         }
+
         return view('meeting.show', compact('meeting'));
     }
 }

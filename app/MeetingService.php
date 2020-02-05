@@ -45,6 +45,6 @@ class MeetingService
             }
         }
 
-        return $new_meeting;
+        return $new_meeting->fresh();
     }
 }
