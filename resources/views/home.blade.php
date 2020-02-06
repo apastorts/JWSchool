@@ -21,6 +21,9 @@
                 <a href="/meeting/send/{{$meeting->id}}" class="text-2xl mr-2">
                   <i class="fas fa-envelope-square"></i>
                 </a>
+                <a href="/meeting/pdf/{{$meeting->id}}" class="text-2xl mr-2">
+                   <i class="fas fa-file-pdf"></i>
+                </a>
                 <button class="text-2xl mr-2" data-toggle="modal" data-target="#modal-{{ $meeting->id }}">
                   <i class="fas fa-minus-square"></i>
                 </button>

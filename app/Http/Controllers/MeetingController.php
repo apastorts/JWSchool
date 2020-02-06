@@ -53,7 +53,7 @@ class MeetingController extends Controller
         if($talk->partner){
           $talk->partner = $talk->partner ? $talk->partner : null;
           $talk->partner->role = $talk->partner ? $talk->partner->role : null;
-        }  
+        }
       }
 
       return view('meeting.show', compact('meeting'));
@@ -73,5 +73,16 @@ class MeetingController extends Controller
       {
         $talk->delete();
       }
+    }
+
+    public function toPDF(Meeting $meeting)
+    {
+        $treasures = $meeting->talks->where('type', 'treasures');
+        $ministry = $meeting->talks->where('type', 'ministry');
+        $christianLiving = $meeting->talks->where('type', 'christianLiving');
+
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML(view('pdf.midweek', compact('meeting','treasures', 'ministry', 'christianLiving'))->render());
+        return $pdf->stream();
     }
 }
