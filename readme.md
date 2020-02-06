@@ -12,9 +12,11 @@ Application to help some Jehovah's Witnesses to organize the Bible School that h
 * [x] Manage Publishers
 * [x] Mail Notifications
 * [x] Print Support
+* [X] Export Meetings to PDf
 * [x] Synchronize meetings with jw.org (beta) using JWGetter
+* [ ] Export many meetings to one pdf.
 * [ ] Add Cron Job to download midweek meetings every week
-* [ ]  Add Pop Up Windows for Notifications
+* [ ] Add Pop Up Windows for Notifications
 
 ## How to start JWSchool
 
@@ -42,3 +44,12 @@ Then log in using `todo@example.com` and password `secret`, or whichever setting
 
 - Run ``` php artisan get:midweek {meeting date} {es/en} ```
 - This will save into the database the midweek meeting from that week in the language of your choice (Only Spanish or English available)
+
+## Add Publishers
+
+When adding publishers JW School follows the next structure:
+
+| Type of User               | Notifications | JW School Access |
+| :------------------------: | :-----------: | :--------------: |
+| User with Password (Admin) | Y             | Y                |
+| User with no password      | Y             | N                |
