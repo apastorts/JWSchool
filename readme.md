@@ -14,6 +14,7 @@ Application to help some Jehovah's Witnesses to organize the Bible School that h
 * [x] Print Support
 * [X] Export Meetings to PDf
 * [x] Synchronize meetings with jw.org (beta) using JWGetter
+* [ ] Choose UI Language
 * [ ] Export many meetings to one pdf.
 * [ ] Add Cron Job to download midweek meetings every week
 * [ ] Add Pop Up Windows for Notifications
