@@ -12,6 +12,21 @@
         </div>
       </div>
        <div>
+           <div class="w-full">
+               <div class="flex justify-between text-lg">
+                   <div>
+                       <input class="p-2 font-bold inline-block bg-grey-lightest" value="Oración de apertura" disabled />
+                   </div>
+                   <div class="p-2 font-bold block">
+                       <div class="bibleReading-selection inline-block">
+                           {{ open ? open.name : ''}}
+                       </div>
+                       <select-user :users="users" v-model="open"></select-user>
+                   </div>
+               </div>
+           </div>
+       </div>
+        <div>
          <div class="w-full">
            <div class="treasures p-2 text-center text-4xl">
              Tesoros de la Biblia
@@ -94,6 +109,21 @@
              <i class="fas fa-plus-circle cursor-pointer text-blue" @click="newField('christianLiving')"></i>
            </div>
        </div>
+       <div>
+           <div class="w-full">
+               <div class="flex justify-between text-lg">
+                   <div>
+                       <input class="p-2 font-bold inline-block bg-grey-lightest" value="Oración de conclusión" disabled />
+                   </div>
+                   <div class="p-2 font-bold block">
+                       <div class="bibleReading-selection inline-block">
+                           {{ close ? close.name : ''}}
+                       </div>
+                       <select-user :users="users" v-model="close"></select-user>
+                   </div>
+               </div>
+           </div>
+       </div>
      </div>
     </div>
 </template>
@@ -114,6 +144,8 @@
         },
         data(){
           return{
+              open: this.meeting.open_pray,
+              close: this.meeting.close_pray,
             meetingDate: this.meeting  ? this.meeting.date : moment().day(3).toDate(),
             users: '',
             treasures: [],
@@ -136,12 +168,16 @@
         methods:{
           saveMeeting(){
             axios
-              .post('/api/meeting/create',{
-                treasures: this.treasures,
-                ministry: this.ministry,
-                christianLiving: this.christianLiving,
-                meetingDate: this.meetingDate ,
-                meeting_id: this.meeting ? this.meeting.id : null
+              .post('/api/meeting/create', {
+                  talks:{
+                      treasures: this.treasures,
+                      ministry: this.ministry,
+                      christianLiving: this.christianLiving
+                  },
+                  meetingDate: this.meetingDate ,
+                  meeting_id: this.meeting ? this.meeting.id : null,
+                  open: this.open,
+                  close: this.close
               })
               .then(response => (
                 window.location.replace('/')

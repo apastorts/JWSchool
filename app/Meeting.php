@@ -10,6 +10,14 @@ class Meeting extends Model
 
     protected $with = ['talks'];
 
+    public function openPray(){
+        return $this->belongsTo(User::class, 'open');
+    }
+
+    public function closePray(){
+        return $this->belongsTo(User::class, 'close');
+    }
+
     public function talks()
     {
       return $this->hasMany(Talk::class);

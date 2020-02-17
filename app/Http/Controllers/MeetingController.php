@@ -18,21 +18,23 @@ class MeetingController extends Controller
 
        $meeting = Meeting::findOrNew(request('meeting_id'));
        $meeting->date = str_replace(['T','Z'],' ', request('meetingDate'));
+       $meeting->open = request('open')['id'];
+       $meeting->close = request('close')['id'];
        $meeting->user_id = auth()->user()->id;
        $this->deleteTalks($meeting);
 
        $meeting->save();
 
-       foreach($request->all() as $type => $talks){
-         if($talks && $type != 'meetingDate' && $type != 'meeting_id')
+       foreach(request('talks') as $type => $talks){
+         if($talks && $type != 'meetingDate' && $type != 'meeting_id' && $type != 'open' && $type != 'close')
          {
            foreach($talks as $talk){
              $newTalk = new Talk();
              $newTalk->meeting_id = $meeting->id;
              $newTalk->type = $type;
              $newTalk->title = $talk['title'];
-             $newTalk->user_id = $talk['user']['id'];
-             $newTalk->partner_id = $talk['partner']['id'];
+             $newTalk->user_id = isset($talk['user']) ? $talk['user']['id'] : '';
+             $newTalk->partner_id = isset($talk['partner']) ? $talk['partner']['id'] : '';
              $newTalk->save();
            }
          }
@@ -43,6 +45,8 @@ class MeetingController extends Controller
 
     public function show(Meeting $meeting)
     {
+        $meeting->openPray;
+        $meeting->closePray;
       $meeting->talks = $meeting->talks;
 
       foreach($meeting->talks as $talk){

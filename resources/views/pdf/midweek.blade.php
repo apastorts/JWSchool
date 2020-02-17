@@ -5,6 +5,16 @@
     .' del '.carbon($meeting->date)->locale('es')->year }}
 </h2>
 <table style="width:100%; margin-top: 1.2em; margin-bottom: 1.2em;">
+        <tr>
+            <td style="padding-top: 1em;">Oración de apertura</td>
+            <td colspan="2" style="padding-top: 1em; text-align: right;">{{ $meeting->openPray ? $meeting->openPray->name : 'Sin Asignar' }}</td>
+        </tr>
+        <tr>
+            <td style="padding-top: 1em;">Presidencia</td>
+            <td colspan="2" style="padding-top: 1em; text-align: right;">{{ $ministry->first()->user ? $ministry->first()->user->name : 'Sin Asignar' }}</td>
+        </tr>
+</table>
+<table style="width:100%; margin-top: 1.2em; margin-bottom: 1.2em;">
     <tr >
         <th colspan="2" style="width:100%; background-color: #5A6A70; color: white; text-align: center; font-size: 1.5em;">TESOROS DE LA BIBLIA</th>
     </tr>
@@ -41,4 +51,10 @@
             <td colspan="2" style="text-align: right; padding-top: 1em">{{ $talk->user ? $talk->user->name : 'Sin Asignar' }}</td>
         </tr>
     @endforeach
+</table>
+<table style="width:100%; margin-top: 1.2em; margin-bottom: 1.2em;">
+    <tr>
+        <td style="padding-top: 1em;">Oración de conclusión</td>
+        <td colspan="2" style="padding-top: 1em; text-align: right;">{{ $meeting->closePray ? $meeting->closePray->name : 'Sin Asignar' }}</td>
+    </tr>
 </table>
