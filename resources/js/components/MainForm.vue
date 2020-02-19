@@ -146,7 +146,8 @@
           return{
               open: this.meeting.open_pray,
               close: this.meeting.close_pray,
-            meetingDate: this.meeting  ? this.meeting.date : moment().day(3).toDate(),
+              existing: this.meeting,
+            meetingDate: this.meeting  ? this.meeting.date : moment().day(1).toDate(),
             users: '',
             treasures: [],
             ministry: [],
@@ -174,8 +175,8 @@
                       ministry: this.ministry,
                       christianLiving: this.christianLiving
                   },
-                  meetingDate: this.meetingDate ,
-                  meeting_id: this.meeting ? this.meeting.id : null,
+                  meetingDate: this.existing ? this.existing.date : this.meetingDate ,
+                  meeting_id: this.existing ? this.existing.id : null,
                   open: this.open,
                   close: this.close
               })
@@ -184,15 +185,16 @@
               ));
           },
           updateDate(){
-            this.meetingDate = moment(this.meetingDate).day(3).toDate();
-            let date = moment(this.meetingDate).day(3).format('YYYY-MM-DD');
+            this.meetingDate = moment(this.meetingDate).day(1).toDate();
+            let date = moment(this.meetingDate).day(1).format('YYYY-MM-DD');
             axios
               .post('/schedule/' + date)
               .then(response => {
                 this.treasures = [];
                 this.ministry = [];
                 this.christianLiving = [];
-                response.data.data.talks.forEach((talk) => {
+                this.existing = response.data.data;
+                this.existing.talks.forEach((talk) => {
                   console.log(talk + ' done');
                   this[talk.type].push(talk);
                 });

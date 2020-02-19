@@ -17,9 +17,9 @@ class MeetingController extends Controller
        ]);
 
        $meeting = Meeting::findOrNew(request('meeting_id'));
-       $meeting->date = str_replace(['T','Z'],' ', request('meetingDate'));
-       $meeting->open = request('open')['id'];
-       $meeting->close = request('close')['id'];
+       $meeting->date = carbon(str_replace(['T','Z'],' ', request('meetingDate')))->startOfWeek();
+       $meeting->open = request('open') ? request('open')['id'] : null;
+       $meeting->close = request('close') ? request('close')['id'] : null;
        $meeting->user_id = auth()->user()->id;
        $this->deleteTalks($meeting);
 

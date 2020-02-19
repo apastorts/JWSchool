@@ -65114,7 +65114,8 @@ var moment = __webpack_require__(0);
     return {
       open: this.meeting.open_pray,
       close: this.meeting.close_pray,
-      meetingDate: this.meeting ? this.meeting.date : moment().day(3).toDate(),
+      existing: this.meeting,
+      meetingDate: this.meeting ? this.meeting.date : moment().day(1).toDate(),
       users: '',
       treasures: [],
       ministry: [],
@@ -65144,8 +65145,8 @@ var moment = __webpack_require__(0);
           ministry: this.ministry,
           christianLiving: this.christianLiving
         },
-        meetingDate: this.meetingDate,
-        meeting_id: this.meeting ? this.meeting.id : null,
+        meetingDate: this.existing ? this.existing.date : this.meetingDate,
+        meeting_id: this.existing ? this.existing.id : null,
         open: this.open,
         close: this.close
       }).then(function (response) {
@@ -65155,13 +65156,14 @@ var moment = __webpack_require__(0);
     updateDate: function updateDate() {
       var _this2 = this;
 
-      this.meetingDate = moment(this.meetingDate).day(3).toDate();
-      var date = moment(this.meetingDate).day(3).format('YYYY-MM-DD');
+      this.meetingDate = moment(this.meetingDate).day(1).toDate();
+      var date = moment(this.meetingDate).day(1).format('YYYY-MM-DD');
       axios.post('/schedule/' + date).then(function (response) {
         _this2.treasures = [];
         _this2.ministry = [];
         _this2.christianLiving = [];
-        response.data.data.talks.forEach(function (talk) {
+        _this2.existing = response.data.data;
+        _this2.existing.talks.forEach(function (talk) {
           console.log(talk + ' done');
           _this2[talk.type].push(talk);
         });

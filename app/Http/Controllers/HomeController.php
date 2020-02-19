@@ -35,8 +35,16 @@ class HomeController extends Controller
     public function find($date)
     {
         $date = carbon($date);
-        $schedule= Schedule::where('date', $date->startOfWeek())->first();
-        $meeting = $schedule ? MeetingService::createMeeting($schedule) : null;
+        $meeting = Meeting::where('date', $date->startOfWeek())->first();
+        if(!$meeting) {
+            $schedule = Schedule::where('date', $date->startOfWeek())->first();
+            $meeting = $schedule ? MeetingService::createMeeting($schedule) : null;
+        }
+        else{
+            $meeting->talks->each(function($talk){
+                $talk->user;
+            });
+        }
         return $meeting ? new MeetingResource($meeting) : null;
     }
 
@@ -48,6 +56,9 @@ class HomeController extends Controller
         }
         else{
             $meeting = Meeting::where('date', now()->startOfWeek())->first();
+            $meeting->talks->each(function($talk){
+                $talk->user;
+            });
         }
 
         return view('meeting.show', compact('meeting'));

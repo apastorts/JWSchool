@@ -1,5 +1,5 @@
 <h2>
-    Reunion del {{ ucfirst(carbon($meeting->date)->locale('es')->dayName)
+    Reunion de la semana del {{ ucfirst(carbon($meeting->date)->locale('es')->dayName)
     .' '.carbon($meeting->date)->locale('es')->day
     .' de '.ucfirst(carbon($meeting->date)->locale('es')->monthName)
     .' del '.carbon($meeting->date)->locale('es')->year }}
