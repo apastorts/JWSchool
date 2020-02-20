@@ -28,6 +28,12 @@ Route::middleware('auth')->get('/user/create', function(){
   return view('auth.register', compact('roles'));
 });
 Route::middleware('auth')->get('/profile', function(){
-  $user = User::all();
-  return view('auth.profile', compact('user'));
+  $users = User::with(['role'])->orderBy('name')->paginate(10);
+  return view('auth.profile', compact('users'));
 });
+
+Route::middleware('auth')->get('/profile/{user}', function(User $user){
+    $roles = Role::all();
+    return view('auth.user', compact('user', 'roles'));
+});
+Route::middleware('auth')->post('/profile/update/{user}', 'UserController@update');
