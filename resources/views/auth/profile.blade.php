@@ -14,11 +14,18 @@
           </div>
         </div>
       </div>
-      <div class="flex flex-row pt-4">
-        <div class="text-sm text-grey ml-2">
+      <div class="flex flex-row pt-4 w-full">
+        <div class="text-sm text-grey ml-2 w-full">
           {{ __('Congregacion') }}
-          <div class="font-bold text-lg text-black" >
-            {{ Auth::user()->congregation->name }}
+          <div class="font-bold flex flex-row justify-between text-lg text-black w-full" >
+              <div class="p-2">
+                  {{ Auth::user()->congregation->name }}
+              </div>
+              <div>
+                  <a href="/congregation/{{ Auth::user()->id }}" class="bg-teal text-white rounded-sm py-2 px-4 cursor-pointer block">
+                      <i class="fas fa-edit"></i>
+                  </a>
+              </div>
           </div>
         </div>
       </div>

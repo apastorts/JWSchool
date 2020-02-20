@@ -37,3 +37,7 @@ Route::middleware('auth')->get('/profile/{user}', function(User $user){
     return view('auth.user', compact('user', 'roles'));
 });
 Route::middleware('auth')->post('/profile/update/{user}', 'UserController@update');
+Route::middleware('auth')->get('/congregation/{user}', function(User $user){
+    return view('auth.congregation', compact('user'));
+});
+Route::middleware('auth')->post('/congregation/update/{cong}', 'UserController@congregation');

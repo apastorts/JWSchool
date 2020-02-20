@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Congregation;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
@@ -44,6 +45,18 @@ class UserController extends Controller
         $user->role_id = request('role');
         $user->sex = request('sex');
         $user->save();
+
+        return redirect('/profile');
+    }
+
+    protected function congregation(Congregation $cong, Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255']
+        ]);
+
+        $cong->name = request('name');
+        $cong->save();
 
         return redirect('/profile');
     }
